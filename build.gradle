@@ -1,5 +1,9 @@
 import com.github.jk1.license.render.*
 plugins {
+    id "java"
+    // Download specific webdriver drivers and set system property accordingly
+    id "com.github.erdi.webdriver-binaries" version "2.0"
+
     id "com.github.jk1.dependency-license-report" version "1.3"
     id "com.moowork.node" version "1.2.0"
 }
@@ -89,6 +93,8 @@ ext {
     apk = [
             proxy : [uri:"",httpsuri:"",user:"",password:""]
     ]
+    fluentleniumVersion = '3.7.1'
+    seleniumVersion = '3.141.59'
 }
 ext.apk.proxy.uri = hasProperty('apk.proxy.uri') && property('apk.proxy.uri') != null && property('apk.proxy.uri') != ""? property('apk.proxy.uri') : System.env.APK_PROXY_URI != null ? "$System.env.APK_PROXY_URI" : ""
 ext.apk.proxy.httpsuri = hasProperty('apk.proxy.httpsuri') && property('apk.proxy.uri') != null && property('apk.proxy.uri') != "" ? property('apk.proxy.uri') : System.env.APK_PROXY_HTTPS_URI != null ? "$System.env.APK_PROXY_HTTPS_URI" : apk.proxy.uri
@@ -148,4 +154,23 @@ tasks.withType(JavaCompile) {
 
  wrapper {
     gradleVersion = '5.1.1'
+}
+
+repositories {
+    mavenCentral()
+}
+dependencies {
+    implementation "org.fluentlenium:fluentlenium-junit-jupiter:$fluentleniumVersion"
+    implementation "org.fluentlenium:fluentlenium-assertj:$fluentleniumVersion"
+    testImplementation "org.seleniumhq.selenium:selenium-firefox-driver:$seleniumVersion"
+    testImplementation "org.junit.jupiter:junit-jupiter-api:5.3.1"
+}
+
+webdriverBinaries {
+    geckodriver '0.23.0'
+}
+
+test{
+    useJUnitPlatform()
+
 }
