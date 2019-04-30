@@ -28,8 +28,7 @@ jobs:
   - stage: docker-images
     script:
       - docker login --username ${DOCKER_CLOUD_USER} --password ${DOCKER_CLOUD_PWD}
-      - cd services
-      - ./gradlew --build-cache copyWorkingDir dockerPush -x test
+      - ./gradlew --build-cache copyWorkingDir dockerPush -x test -x :docker-standalone-images
   - stage: doc
     script:
       - ./gradlew --build-cache generateSwaggerCodeDoc javadoc asciidoctor :ui:main:npm_run_compodoc
