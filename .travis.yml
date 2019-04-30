@@ -19,8 +19,8 @@ jobs:
   include:
   - stage: test-assemble
     script:
-      - rm -rf  $HOME/.gradle/caches/build-cache-*
-      - ./gradlew --build-cache clean
+#      - rm -rf  $HOME/.gradle/caches/build-cache-*
+#      - ./gradlew --build-cache clean
       - docker-compose -f src/main/docker/test-environment/docker-compose.yml up -d
       - ./gradlew --build-cache copyDependencies test jacocoTestReport && sonar-scanner
       - docker-compose -f src/main/docker/test-environment/docker-compose.yml down
@@ -29,6 +29,7 @@ jobs:
     script:
       - docker login --username ${DOCKER_CLOUD_USER} --password ${DOCKER_CLOUD_PWD}
       - ./gradlew --build-cache copyWorkingDir dockerPush -x test -x :docker-standalone-images
+      - docker image ls -a|grep lfeoperatorfabric
   - stage: doc
     script:
       - ./gradlew --build-cache generateSwaggerCodeDoc javadoc asciidoctor :ui:main:npm_run_compodoc
