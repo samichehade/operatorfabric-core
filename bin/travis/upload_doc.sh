@@ -25,7 +25,7 @@ cd $HOME/documentation
 if [ -n "$(git status --porcelain)" ]; then
     echo "Changes to documentation detected, preparing commit"
     git add .
-    git commit -m "Updating documentation"
+    git commit -m "Updating documentation for version ${OF_VERSION}"
     git push $HTTP_REPO master > /dev/null 2>&1
 else
     echo "No changes to documentation detected"

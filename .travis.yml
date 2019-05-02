@@ -12,6 +12,7 @@ env:
 language: java
 before_install:
   - sudo apt-get install realpath
+  - export OF_VERSION=$(cat "$OF_HOME/VERSION")
   # Load cached docker images
   # - if [[ -d $HOME/docker ]]; then ls $HOME/docker/*.tar.gz | xargs -I {file} sh -c "zcat {file} | docker load"; fi
 install: true
@@ -27,9 +28,11 @@ jobs:
 #      - ./gradlew --build-cache assemble -x test
   - stage: docker-images
     script:
-      - docker login --username ${DOCKER_CLOUD_USER} --password ${DOCKER_CLOUD_PWD}
-      - ./gradlew --build-cache copyWorkingDir dockerPush -x test -x :docker-standalone-images:dummy-card-daemon:dockerPush
-      - docker image ls -a|grep lfeoperatorfabric
+    - docker login --username ${DOCKER_CLOUD_USER} --password ${DOCKER_CLOUD_PWD}
+    - ./gradlew --build-cache copyWorkingDir dockerPush${OF_VERSION} -x test -x :docker-standalone-images:dummy-card-daemon:dockerPush${OF_VERSION}
+    - "[[ $OF_VERSION =~ .+SNAPSHOT ]] && ./gradlew --build-cache copyWorkingDir dockerPushSnapshot dockerPushLatest -x test -x :docker-standalone-images:dummy-card-daemon:dockerPushSnapshot"
+    - "[[ $OF_VERSION =~ .+RELEASE$ ]] && ./gradlew --build-cache copyWorkingDir dockerPush$Latest dockerPushLatest -x test --x :docker-standalone-images:dummy-card-daemon:dockerPushLatest"
+    - docker image ls -a|grep lfeoperatorfabric
   - stage: doc
     script:
       - ./gradlew --build-cache generateSwaggerCodeDoc javadoc asciidoctor :ui:main:npm_run_compodoc
