@@ -418,6 +418,7 @@ export class TimeLineComponent implements OnInit, OnDestroy {
             for (const val of tmp) {
                 // val.endDate val.startDate val.severity
                 const myCardTimeline = {
+                    publishDate: val.publishDate,
                     startDate: val.startDate,
                     endDate: val.endDate,
                     severity: val.severity,
