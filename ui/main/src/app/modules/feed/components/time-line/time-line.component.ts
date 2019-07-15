@@ -676,7 +676,7 @@ export class TimeLineComponent implements OnInit, OnDestroy {
                     startDate: val.startDate,
                     endDate: val.endDate,
                     severity: val.severity,
-                    summary: val.summary.parameters.value
+                    summary: val.title.parameters.value
                 };
                 myCardsTimeline.push(myCardTimeline);
             }
