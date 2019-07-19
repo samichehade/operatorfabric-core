@@ -830,6 +830,10 @@ export class CustomTimelineChartComponent extends BaseChartComponent implements 
           }
         }
       });
+      // if width: 0 wasn't set and screen width is more little than smallest width configuration
+      if (keepGoing) {
+        this.formatLevel = _.cloneDeep(this.formatTicks[this.formatTicks.length - 1].formatTicks);
+      }
     } else {
       this.formatLevel = _.cloneDeep(this.formatTicks);
     }
@@ -854,6 +858,10 @@ export class CustomTimelineChartComponent extends BaseChartComponent implements 
           }
         }
       });
+      // if width: 0 wasn't set and screen width is more little than smallest width configuration
+      if (keepGoing) {
+        this.clusterLevel = _.cloneDeep(this.clusterConf[this.clusterConf.length - 1].conf);
+      }
     } else {
       this.clusterLevel = _.cloneDeep(this.clusterConf);
     }
