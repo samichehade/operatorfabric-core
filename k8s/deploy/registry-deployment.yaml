@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  labels:
+    app: lfeoperatorfabric
+    service: registry
+  name: registry
+spec:
+  serviceName: "registry"
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        service: "registry"
+    spec:
+      containers:
+      - env:
+        - name: MY_POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        - name: _JAVA_OPTIONS
+          value: -Dspring-boot.run.profiles=${MY_POD_NAME}
+        - name: EUREKA_CLIENT_REGISTERWITHEUREKA
+          value: "true"
+        - name: EUREKA_CLIENT_FETCHREGISTRY
+          value: "true"
+        - name: CONFIG_HOST
+          value: config
+        - name: CONFIG_PORT
+          value: "8080"
+        - name : EUREKA_INSTANCE_HOSTNAME
+          value: ${MY_POD_NAME}.registry
+        image: lfeoperatorfabric/of-registry-cloud-service:0.2.1.RELEASE
+        name: registry
+        ports:
+        - containerPort: 8080
+        - containerPort: 5005
+        resources: {}
+      restartPolicy: Always
+  volumeClaimTemplates: [] # see https://github.com/kubernetes-sigs/kustomize/issues/504#issuecomment-459748681
