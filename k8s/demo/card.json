@@ -34,7 +34,7 @@
 		"tso1-operator"
 	],
 	"data" : {
-		"greetings-from":"TSO-1"
+		"greetings-from":"Bonjour le <script>alert('xss')</script> monde"
 	},
 	"details" : [
 		{

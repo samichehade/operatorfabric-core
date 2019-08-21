@@ -22,7 +22,7 @@ spec:
           value: registry
         - name: REGISTRY_PORT
           value: "8080"
-        image: lfeoperatorfabric/of-web-ui:0.2.1.RELEASE
+        image: lfeoperatorfabric/of-web-ui:0.8.1.SNAPSHOT
         name: web-ui
         ports:
         - containerPort: 8080

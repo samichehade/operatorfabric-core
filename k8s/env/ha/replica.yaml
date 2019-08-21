@@ -17,7 +17,7 @@ apiVersion: apps/v1
 metadata:
   name: client-gateway
 spec:
-  replicas: 2
+  replicas: 1 # TODO update
 ---
 kind: Deployment
 apiVersion: apps/v1

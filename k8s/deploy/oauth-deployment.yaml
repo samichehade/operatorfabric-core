@@ -14,11 +14,26 @@ spec:
         service: oauth2
     spec:
       containers:
-      - image: lfeoperatorfabric/of-oauth2-dev-server:0.2.1.RELEASE
-        name: oauth2
-        ports:
-        - containerPort: 8080
-        - containerPort: 5005
-        resources: {}
+        - image: jboss/keycloak
+          name: oauth2
+          args: ["-Dkeycloak.migration.action=import", "-Dkeycloak.migration.provider=dir", "-Dkeycloak.migration.dir=/realms/export"]
+          ports:
+            - containerPort: 8080
+            - containerPort: 9990
+          resources: {}
+          env:
+            - name: KEYCLOAK_USER
+              value: admin
+            - name: KEYCLOAK_PASSWORD
+              value: admin
+            - name: DB_VENDOR
+              value: H2
+          volumeMounts:
+            - mountPath: /realms/export
+              name: config-realms
       restartPolicy: Always
+      volumes:
+        - name: config-realms
+          configMap: # Ref to the configMap creates before deployment
+            name: service-realms
 

@@ -54,3 +54,9 @@ configMapGenerator:
   - ./configurations/thirds.yml
   - ./configurations/time.yml
   - ./configurations/users.yml
+- name: service-realms
+  files:
+    - ./realms/export/dev-realm.json
+    - ./realms/export/dev-users-0.json
+    - ./realms/export/master-realm.json
+    - ./realms/export/master-users-0.json

@@ -24,7 +24,7 @@ spec:
           value: registry
         - name: REGISTRY_PORT
           value: "8080"
-        image: lfeoperatorfabric/of-thirds-business-service:0.2.1.RELEASE
+        image: lfeoperatorfabric/of-thirds-business-service:0.8.1.SNAPSHOT
         name: thirds
         ports:
         - containerPort: 8080
