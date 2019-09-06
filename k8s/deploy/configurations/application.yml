@@ -17,8 +17,8 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          jwk-set-uri: http://keycloak:8080/auth/realms/dev/protocol/openid-connect/certs
-#          jwk-set-uri: http://oauth2:8080/auth/jwks.json
+          jwk-set-uri: https://keycloak-dev.1e242a63d7484862a97a.westeurope.aksapp.io/auth/realms/EntsoeAATRealm/protocol/openid-connect/certs
+  #          jwk-set-uri: http://oauth2:8080/auth/jwks.json
   data:
     mongodb:
       uris:
@@ -33,8 +33,8 @@ eureka:
 operatorfabric:
   security:
     oauth2:
-      client-id: opfab-client
-      client-secret: opfab-keycloak-secret
+      client-id: LetsCo
+      client-secret: 71cc8849-c47a-40a6-bff7-626cda41dbde
     jwt:
       login-claim: preferred_username
       expire-claim: exp
