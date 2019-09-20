@@ -1,0 +1,23 @@
+{{- if .Values.persistence.enabled }}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  labels:
+    app: lfeoperatorfabric
+    service: thirds
+  name: thirds-volume-claim
+{{- with .Values.persistence.annotations }}
+  annotations:
+  {{- range $key, $value := . }}
+    {{ $key }}: {{ $value }}
+  {{- end }}
+{{- end }}
+spec:
+  accessModes:
+  {{- range .Values.persistence.accessModes }}
+    - {{ . | quote }}
+  {{- end }}
+  resources:
+    requests:
+      storage: {{ .Values.persistence.size | quote }} 
+{{- end }}

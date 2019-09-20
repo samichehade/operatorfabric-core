@@ -35,7 +35,7 @@ A mongodb instance is required.
 
 A helm chart is available if needed, for example
 ```sh
-helm install --name mongodb stable/mongodb --set persistence.size=1Gi --set mongodbRootPassword=password
+helm install --name mongodb stable/mongodb --set persistence.size=1Gi --set mongodbRootPassword=password --set volumePermissions.enabled=true
 ```
 
 See [official documentation](https://github.com/helm/charts/tree/master/stable/mongodb) for configuration options

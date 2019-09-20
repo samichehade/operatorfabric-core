@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "cards-consultation.fullname" . }}
+  labels:
+{{ include "cards-consultation.labels" . | indent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+    # TODO renommer / supprimer
+    - name: "http-4104"
+      port: 4104
+      targetPort: "http-5005"
+  selector:
+    app.kubernetes.io/name: {{ include "cards-consultation.name" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}

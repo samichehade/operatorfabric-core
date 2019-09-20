@@ -4,7 +4,7 @@ metadata:
   name: client-gateway-ingress
 spec:
   rules:
-    - host: you.opfab.host
+    - host: your.opfab.host
       http:
         paths:
           - path: /

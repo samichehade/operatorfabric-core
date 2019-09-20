@@ -29,7 +29,7 @@ eureka:
       defaultZone: http://registry-0.registry:8080/eureka/,http://registry-1.registry:8080/eureka/
     region: default
   registryFetchIntervalSeconds: 5
-  
+
 operatorfabric:
   security:
     oauth2:

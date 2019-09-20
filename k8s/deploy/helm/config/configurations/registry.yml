@@ -1,3 +1,16 @@
+# Profil registry sans HA
+spring:
+  profiles: registry
+eureka:
+  instance.hostname: registry-0
+  client:
+    serviceUrl.defaultZone: http://registry-0.registry:8080/eureka/
+    registerWithEureka: false
+    fetchRegistry: false
+    server:
+      waitTimeInMsWhenSyncEmpty: 0
+# Profil registry avec HA
+---
 spring:
   profiles: registry-0
 eureka:

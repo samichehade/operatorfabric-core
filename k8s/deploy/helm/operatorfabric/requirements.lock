@@ -1,0 +1,33 @@
+dependencies:
+- name: cards-consultation
+  repository: file://../cards-consultation
+  version: 0.1.0
+- name: cards-publication
+  repository: file://../cards-publication
+  version: 0.1.0
+- name: config
+  repository: file://../config
+  version: 0.1.0
+- name: registry
+  repository: file://../registry
+  version: 0.1.0
+- name: oauth
+  repository: file://../oauth
+  version: 0.1.0
+- name: thirds
+  repository: file://../thirds
+  version: 0.1.0
+- name: time
+  repository: file://../time
+  version: 0.1.0
+- name: users
+  repository: file://../users
+  version: 0.1.0
+- name: web-ui
+  repository: file://../web-ui
+  version: 0.1.0
+- name: client-gateway
+  repository: file://../client-gateway
+  version: 0.1.0
+digest: sha256:8241118ede3683a02c66af6af77593aad595c82b28bed5b05a8d0d5cef44a564
+generated: "2019-09-20T17:37:12.0796274+02:00"

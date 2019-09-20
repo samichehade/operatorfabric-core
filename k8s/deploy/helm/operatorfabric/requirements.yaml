@@ -1,0 +1,32 @@
+# requirements.yaml
+dependencies:
+- name: cards-consultation
+  version: "0.1.0"
+  repository: "file://../cards-consultation"
+- name: cards-publication
+  version: "0.1.0"
+  repository: "file://../cards-publication"
+- name: config
+  version: "0.1.0"
+  repository: "file://../config"
+- name: registry
+  version: "0.1.0"
+  repository: "file://../registry"
+- name: oauth
+  version: "0.1.0"
+  repository: "file://../oauth"
+- name: thirds
+  version: "0.1.0"
+  repository: "file://../thirds"
+- name: time
+  version: "0.1.0"
+  repository: "file://../time"
+- name: users
+  version: "0.1.0"
+  repository: "file://../users"
+- name: web-ui
+  version: "0.1.0"
+  repository: "file://../web-ui"
+- name: client-gateway
+  version: "0.1.0"
+  repository: "file://../client-gateway"

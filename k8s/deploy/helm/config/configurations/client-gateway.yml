@@ -1,0 +1,21 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: auth
+          uri: https://keycloak-dev.1e242a63d7484862a97a.westeurope.aksapp.io
+          predicates:
+            - Path=/auth/**
+          filters:
+            - RewritePath=/auth/token(?<path>.*), /auth/realms/EntsoeAATRealm/protocol/openid-connect/token$\{path}
+            - RewritePath=/auth/code/(?<params>.*), /auth/realms/EntsoeAATRealm/protocol/openid-connect/auth?response_type=code&client_id=LetsCo&$\{params}
+            - RewritePath=/auth/check_token, /auth/realms/EntsoeAATRealm/protocol/openid-connect/token/introspect
+            - AddRequestHeader=Authorization, Basic b3BmYWItY2xpZW50Om9wZmFiLWtleWNsb2FrLXNlY3JldA==
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "Authorization, Content-Type"
+operatorfabric.gateway.configs:
+  - web-ui.json
