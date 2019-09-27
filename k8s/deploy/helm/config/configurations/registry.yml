@@ -9,7 +9,7 @@ eureka:
     fetchRegistry: false
     server:
       waitTimeInMsWhenSyncEmpty: 0
-# Profil registry avec HA
+# Profil registry avec HA, à activer si besoin
 ---
 spring:
   profiles: registry-0

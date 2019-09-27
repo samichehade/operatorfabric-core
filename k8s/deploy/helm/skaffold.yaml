@@ -1,0 +1,8 @@
+apiVersion: skaffold/v1beta15
+kind: Config
+deploy:
+  helm:
+    releases:
+    - name: opfab
+      chartPath: ./operatorfabric
+      namespace: default

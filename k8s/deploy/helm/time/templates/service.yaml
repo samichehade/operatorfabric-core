@@ -1,7 +1,8 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "time.fullname" . }}
+  # hardcoded name due to eureka stack
+  name: time
   labels:
 {{ include "time.labels" . | indent 4 }}
 spec:

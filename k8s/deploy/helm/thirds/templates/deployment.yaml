@@ -35,8 +35,6 @@ spec:
           env:
             - name: EUREKA_INSTANCE_HOSTNAME
               value: thirds
-            - name: DEPENDS_ON
-              value: CONFIG
             - name: REGISTRY_HOST
               value: registry
             - name: REGISTRY_PORT

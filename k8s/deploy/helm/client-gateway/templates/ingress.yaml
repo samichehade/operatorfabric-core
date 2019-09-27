@@ -29,7 +29,8 @@ spec:
         {{- range .paths }}
           - path: {{ . }}
             backend:
-              serviceName: {{ $fullName }}
+                # hardcoded name due to eureka stack 
+              serviceName: client-gateway
               servicePort: http
         {{- end }}
   {{- end }}

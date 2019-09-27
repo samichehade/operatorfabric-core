@@ -1,7 +1,8 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: {{ include "registry.fullname" . }}
+  # hardcoded for HA
+  name: "registry"
   labels:
 {{ include "registry.labels" . | indent 4 }}
 spec:
@@ -27,13 +28,20 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
-            # Gestion HA
             - name: MY_POD_NAME
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.name
+            # Mono instance, on utilise un profil spring dédié
+            {{- if eq .Values.replicaCount 1.0 }}
+            - name: _JAVA_OPTIONS
+              value: -Dspring-boot.run.profiles=registry
+            # Gestion HA
+            {{- else }}}
+
             - name: _JAVA_OPTIONS
               value: -Dspring-boot.run.profiles=${MY_POD_NAME}
+            {{- end }}
             - name : EUREKA_INSTANCE_HOSTNAME
               value: ${MY_POD_NAME}.registry
             - name: EUREKA_CLIENT_REGISTERWITHEUREKA

@@ -1,0 +1,18 @@
+
+#default config
+
+# External chart configuration
+#Mongo chart configuration
+mongodb:
+    persistence:
+        size: 1Gi 
+    mongodbRootPassword: password
+    volumePermissions:
+        enabled: true
+
+# # Rabbitmq chart configuration
+rabbitmq-ha:
+    rabbitmqPassword: guest 
+    prometheus:
+        operator:
+            enabled: false

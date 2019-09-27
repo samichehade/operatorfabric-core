@@ -10,7 +10,7 @@ spring:
             - RewritePath=/auth/token(?<path>.*), /auth/realms/EntsoeAATRealm/protocol/openid-connect/token$\{path}
             - RewritePath=/auth/code/(?<params>.*), /auth/realms/EntsoeAATRealm/protocol/openid-connect/auth?response_type=code&client_id=LetsCo&$\{params}
             - RewritePath=/auth/check_token, /auth/realms/EntsoeAATRealm/protocol/openid-connect/token/introspect
-            - AddRequestHeader=Authorization, Basic b3BmYWItY2xpZW50Om9wZmFiLWtleWNsb2FrLXNlY3JldA==
+            - AddRequestHeader=Authorization, Basic TGV0c0NvOjcxY2M4ODQ5LWM0N2EtNDBhNi1iZmY3LTYyNmNkYTQxZGJkZQ==
       globalcors:
         corsConfigurations:
           '[/**]':

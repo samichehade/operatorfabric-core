@@ -1,0 +1,10 @@
+#config for HA 
+registry:
+    replicaCount: 2
+
+config:
+    replicaCount: 2
+
+card-consultation:
+    replicaCount: 2
+

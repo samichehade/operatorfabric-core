@@ -1,11 +1,14 @@
-# Helm
+# Helm installation
 
-## Install
-
+## Install using global chart
 
 ```sh
-helm install --name operatorfabric operatorfabric/
+helm install --dep-up --name operatorfabric operatorfabric/
 ```
+
+configuration can be updated in [values.yaml](./operatorfabric/values.yaml)
+
+## Install single component
 
 ```sh
 helm install --name config config/
@@ -21,6 +24,12 @@ helm install --name client-gateway client-gateway/
 ```
 
 ## Remove
+
+```sh
+helm del --purge operatorfabric
+```
+
+or
 
 ```sh
 helm del --purge config
@@ -47,5 +56,5 @@ helm upgrade oauth oauth/
 ## Todo
 
 - Env var name à templétiser
-- liveness readness
-- service static vs config (chart-config vs config en dur)
+- liveness / readness à tunner
+- mongo/rabbit en dépendance (configuration.yml)

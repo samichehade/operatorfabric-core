@@ -4,7 +4,7 @@ operatorfabric:
       flow:
         mode: CODE
         provider: Opfab Keycloak
-        delagate-url: http://www.opfab.io/auth/realms/master/protocol/openid-connect/auth?response_type=code&client_id=opfab-client
+        delagate-url: https://keycloak-dev.1e242a63d7484862a97a.westeurope.aksapp.io/auth/realms/EntsoeAATRealm/protocol/openid-connect/auth?response_type=code&client_id=LetsCo
   feed:
     subscription:
       timeout: 600000

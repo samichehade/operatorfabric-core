@@ -1,10 +1,4 @@
 dependencies:
-- name: cards-consultation
-  repository: file://../cards-consultation
-  version: 0.1.0
-- name: cards-publication
-  repository: file://../cards-publication
-  version: 0.1.0
 - name: config
   repository: file://../config
   version: 0.1.0
@@ -13,6 +7,12 @@ dependencies:
   version: 0.1.0
 - name: oauth
   repository: file://../oauth
+  version: 0.1.0
+- name: cards-consultation
+  repository: file://../cards-consultation
+  version: 0.1.0
+- name: cards-publication
+  repository: file://../cards-publication
   version: 0.1.0
 - name: thirds
   repository: file://../thirds
@@ -29,5 +29,5 @@ dependencies:
 - name: client-gateway
   repository: file://../client-gateway
   version: 0.1.0
-digest: sha256:8241118ede3683a02c66af6af77593aad595c82b28bed5b05a8d0d5cef44a564
-generated: "2019-09-20T17:37:12.0796274+02:00"
+digest: sha256:5fbae11110009f19f75383ca52124a38a742353184e03680185687ecceb74ec3
+generated: "2019-09-27T15:21:03.8016116+02:00"

@@ -1,11 +1,5 @@
 # requirements.yaml
 dependencies:
-- name: cards-consultation
-  version: "0.1.0"
-  repository: "file://../cards-consultation"
-- name: cards-publication
-  version: "0.1.0"
-  repository: "file://../cards-publication"
 - name: config
   version: "0.1.0"
   repository: "file://../config"
@@ -15,6 +9,12 @@ dependencies:
 - name: oauth
   version: "0.1.0"
   repository: "file://../oauth"
+- name: cards-consultation
+  version: "0.1.0"
+  repository: "file://../cards-consultation"
+- name: cards-publication
+  version: "0.1.0"
+  repository: "file://../cards-publication"
 - name: thirds
   version: "0.1.0"
   repository: "file://../thirds"
@@ -30,3 +30,9 @@ dependencies:
 - name: client-gateway
   version: "0.1.0"
   repository: "file://../client-gateway"
+# - name: rabbitmq-ha
+#   version: 1.32.3
+#   repository: "@stable"
+# - name: mongodb
+#   version: 7.2.8
+#   repository: "@stable"
